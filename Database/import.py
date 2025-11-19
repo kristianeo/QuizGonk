@@ -30,6 +30,12 @@ for game in data["games"]:
         cursor.execute("INSERT INTO QuizzerQuestions.questions(gameID, question, correct_answer) VALUES (%s, %s, %s)",
                        (game_id, q["question"], q["correct"])
                        )
+        question_id = cursor.lastrowid
+
+        for index, option_text in enumerate(q["content"]):
+            cursor.execute("INSERT INTO QuizzerQuestions.options(questionID, option_text, option_index) VALUES (%s, %s, %s)",
+                           (question_id, option_text, index)
+                           )
 
 
 mydb.commit()
