@@ -4,7 +4,8 @@ CREATE DATABASE QuizzerQuestions;
 use QuizzerQuestions;
 
 CREATE TABLE games (
-    gameID INT PRIMARY KEY AUTO_INCREMENT
+    gameID INT PRIMARY KEY AUTO_INCREMENT,
+    name VARCHAR(255)
 );
 
 -- question table, where correct_answer correlates to index of the correct answer in questions.json.
