@@ -1,5 +1,4 @@
 
-from pathlib import Path
 from Views.quizzer import gameLoop
 
 def mainMenu(data):
