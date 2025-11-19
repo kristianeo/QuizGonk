@@ -1,6 +1,9 @@
 import pymysql #Python library for MySQL queries
 import json
+from dotenv import load_dotenv
 import os
+
+load_dotenv("../.env")
 
 mydb = pymysql.connect(
     host = os.environ.get("DB_ADDRESS"),
