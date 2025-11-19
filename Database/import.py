@@ -1,14 +1,14 @@
-import mysql.connector
+import pymysql #Python library for MySQL queries
 import json
-from dotenv import dotenv_values
-config = dotenv_values(".env")
+import os
 
-mydb = mysql.connector.connect(
-    host = config['DB_ADDRESS'],
-    user = config['PYTHON_DB_USER'],
-    passwd = config['PYTHON_USER_PASSWORD'],
-    database = config['DB_NAME']
-)
+mydb = pymysql.connect(
+    host = os.environ.get("DB_ADDRESS"),
+    user = os.environ.get("PYTHON_DB_USER"),
+    passwd = os.environ.get("PYTHON_USER_PASSWORD"),
+    database = os.environ.get("DB_NAME")
+    )
+
 
 with (open('questions.json', 'r') as qj):
     data = json.load(qj)
