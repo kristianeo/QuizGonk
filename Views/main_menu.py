@@ -35,7 +35,7 @@ def mainMenu(data):
             return None
 
         if userInput.isdigit():
-            index = int(userInput)
+            index = int(userInput) -1
             if 0 <= index < len(games):
                 gameLoop(userInput)
                 return None
