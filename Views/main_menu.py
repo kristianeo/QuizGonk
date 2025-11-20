@@ -1,8 +1,11 @@
 
-from Views.quizzer import gameLoop
-
-def mainMenu(data):
-    games = data['games']
+def mainMenu(handler):
+    # Load quiz summary if not already loaded
+    if not handler.quiz_summary.get('games'):
+        handler._load_quiz_summary()
+    
+    games = handler.quiz_summary.get('games', [])
+    
     while True:
         try:
             print("""
@@ -14,13 +17,17 @@ def mainMenu(data):
                 print("No games available.")
             else:
                 for i, game in enumerate(games):
-                    print(f"{i+1}. Game {i+1} ({game['questions']} questions)")
-                print("M. Mixed game (All questions)")
+                    game_name = game.get('name', f'Game {i+1}')
+                    print(f"{i+1}. {game_name} ({game['questions']} questions)")
+                total = handler.quiz_summary.get('total_questions', 0)
+                mixed_count = min(15, total) if total > 0 else 15
+                print(f"M. Mixed game ({mixed_count} random questions)")
             print("Q or X. Quit")
             userInput = input("Select option: ").strip()
         except (EOFError, KeyboardInterrupt):
             print("\nExiting.")
-            return None
+            handler.quit()
+            return
 
         if not userInput:
             continue
@@ -28,17 +35,20 @@ def mainMenu(data):
         ui = userInput.lower()
         if ui in ("q", "x"):
             print("Goodbye.")
-            return None
+            handler.quit()
+            return
 
         if ui == "m":
-            gameLoop("m")
-            return None
+            handler.selected_game = "m"
+            handler.navigate_to("quiz")
+            return
 
         if userInput.isdigit():
-            index = int(userInput) -1
+            index = int(userInput) - 1
             if 0 <= index < len(games):
-                gameLoop(userInput)
-                return None
+                handler.selected_game = index
+                handler.navigate_to("quiz")
+                return
             else:
                 print(f"Please select a number between 1 and {len(games)}.")
                 continue
