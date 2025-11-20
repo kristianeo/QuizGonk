@@ -122,7 +122,7 @@ class ViewHandler:
     
     def run(self):
         from Views.main_menu import mainMenu
-        from Views.quizzer import gameLoop
+        from Views.quizzer import game_loop
         from Views.results import show_results
         from Views.review import show_review
         
@@ -130,7 +130,7 @@ class ViewHandler:
             if self.current_view == "main":
                 mainMenu(self)
             elif self.current_view == "quiz":
-                gameLoop(self)
+                game_loop(self)
             elif self.current_view == "results":
                 show_results(self)
             elif self.current_view == "review":

@@ -10,7 +10,7 @@ mydb = pymysql.connect(
     database = os.environ.get("DB_NAME")
     )
 
-with (open('questions.json', 'r') as qj):
+with (open('Database/questions.json', 'r') as qj):
     data = json.load(qj)
 def game_loop(selected):
     global selected_index
