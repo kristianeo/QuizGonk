@@ -1,3 +1,11 @@
+from Views.main_menu import mainMenu
+from Database.import_games import importGames
+from pathlib import Path
+import pymysql
+from dotenv import load_dotenv
+import os
+
+
 def getGames():
     load_dotenv("../.env")
 
@@ -30,3 +38,8 @@ def getGames():
         'total_games': total_games,
         'games': [{'questions': game[1]} for game in games]
     }
+
+if __name__ == "__main__":
+    importGames()
+    games = getGames()
+    mainMenu(games)
