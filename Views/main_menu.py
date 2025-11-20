@@ -2,7 +2,7 @@
 from Views.quizzer import gameLoop
 
 def mainMenu(data):
-    games = data
+    games = data['games']
     while True:
         try:
             print("""
@@ -14,7 +14,7 @@ def mainMenu(data):
                 print("No games available.")
             else:
                 for i, game in enumerate(games):
-                    print(f"{i+1}. {game.get('name', 'Game')} ({len(game.get('questions', []))} questions)")
+                    print(f"{i+1}. Game {i+1} ({game['questions']} questions)")
                 print("M. Mixed game (All questions)")
             print("Q or X. Quit")
             userInput = input("Select option: ").strip()
@@ -31,17 +31,13 @@ def mainMenu(data):
             return None
 
         if ui == "m":
-            mixed_questions = []
-            for g in games:
-                mixed_questions.extend(g.get("questions", []))
-            mixed_game = {"questions": mixed_questions}
-            gameLoop(mixed_game)
+            gameLoop("m")
             return None
 
         if userInput.isdigit():
-            idx = int(userInput) - 1
-            if 0 <= idx < len(games):
-                gameLoop(games[idx])
+            index = int(userInput)
+            if 0 <= index < len(games):
+                gameLoop(userInput)
                 return None
             else:
                 print(f"Please select a number between 1 and {len(games)}.")
