@@ -11,28 +11,32 @@ def game_loop(handler):
     handler.review_data = []
 
     print("Let's test your knowledge!")
-    answers = handler.user_answers
+    user_answers = handler.user_answers
     right_wrong = handler.results_data
-    correct = handler.review_data
+    correct_index = handler.review_data
     question_number = 0
 
     for i in question:
-        correct.append(i['correct_answer'])
-        print(correct)
+        correct_index.append(i['correct_answer'])
+        print(correct_index)
         print(f"Question {question_number+1}: {i['question']}")
         for j, k in enumerate(i['options'], 1):
             print(f"{j}. {k}")
-
         question_number += 1
+        while True:
+            try:
+                selected_index = int(input("Choose an answer: "))-1
+                if 0 <= selected_index < 4:
+                    user_answers.append(selected_index)
+                    if selected_index == i['correct_answer']:
+                        right_wrong.append("right")
+                        print(right_wrong)
+                    else:
+                        right_wrong.append("wrong")
+                    break
+                else:
+                    print("Please enter a number from 1-4...")
+            except ValueError:
+                print("Please enter a number from 1-4...")
 
-        selected_index = int(input("Choose an answer: "))-1
-        answers.append(selected_index)
-        print(answers)
-
-        if selected_index == i['correct_answer']:
-            right_wrong.append("right")
-            print(right_wrong)
-        else:
-            right_wrong.append("wrong")
-
-        handler.navigate_to('results')
+    handler.navigate_to('results')
