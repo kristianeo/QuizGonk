@@ -32,7 +32,6 @@ def game_loop(handler):
                     user_answers.append(selected_index)
                     if selected_index == i['correct_answer']:
                         right_wrong.append("right")
-                        print(right_wrong)
                     else:
                         right_wrong.append("wrong")
                     break
@@ -40,5 +39,6 @@ def game_loop(handler):
                     print("Please enter a number from 1-4...")
             except ValueError:
                 print("Please enter a number from 1-4...")
-    os.system('cls' if os.name == 'nt' else 'clear')
+
     handler.navigate_to('results')
+    os.system('cls' if os.name == 'nt' else 'clear')

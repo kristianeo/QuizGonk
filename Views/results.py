@@ -27,8 +27,8 @@ def show_results(handler):
             handler.quit()
             return
         else:
-            os.system('cls' if os.name == 'nt' else 'clear')
             handler.navigate_to("main")
+            os.system('cls' if os.name == 'nt' else 'clear')
             return
 
     wait_for_user = True
@@ -36,12 +36,12 @@ def show_results(handler):
         try:
             user_input = input("Do you want a review? (y/n): ").strip().lower()
             if user_input == 'y':
-                os.system('cls' if os.name == 'nt' else 'clear')
                 handler.navigate_to("review")
+                os.system('cls' if os.name == 'nt' else 'clear')
                 wait_for_user = False
             elif user_input == 'n':
-                os.system('cls' if os.name == 'nt' else 'clear')
                 handler.navigate_to("main")
+                os.system('cls' if os.name == 'nt' else 'clear')
                 wait_for_user = False
             else:
                 print("Invalid input. Please select yes for review, or chose no to go back to main menu.")
