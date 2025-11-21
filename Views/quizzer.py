@@ -1,3 +1,4 @@
+import os
 
 def game_loop(handler):
 
@@ -17,6 +18,7 @@ def game_loop(handler):
     question_number = 0
 
     for i in question:
+        os.system('cls' if os.name == 'nt' else 'clear')
         correct_index.append(i['correct_answer'])
         print(correct_index)
         print(f"Question {question_number+1}: {i['question']}")
