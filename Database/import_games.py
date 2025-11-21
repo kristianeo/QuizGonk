@@ -2,6 +2,10 @@ import pymysql
 import json
 from dotenv import load_dotenv
 import os
+from pathlib import Path
+
+json_path = Path(__file__).parents[1] / 'Database/questions.json'
+
 
 def import_games():
     print("Starting import of games...")
@@ -14,7 +18,7 @@ def import_games():
         database = os.environ.get("DB_NAME")
         )
 
-    with (open('questions.json', 'r') as qj):
+    with (open(json_path, 'r') as qj):
         data = json.load(qj)
 
     print(f"Loaded {len(data['games'])} games from questions.json")
