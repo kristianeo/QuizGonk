@@ -1,3 +1,5 @@
+import os
+
 def show_results(handler):
     results_data_check = handler.results_data
 
@@ -18,13 +20,14 @@ def show_results(handler):
 
     if wrong_count == 0:
         print("Congratulations! You dont need a review.\n")
-        user_input = input("Enter any key to enter main menu. Q or X to quit.")
+        user_input = input("Press enter to return to main menu. Q or X to quit.")
         ui = user_input.lower().strip()
         if ui in ("q", "x"):
             print("Goodbye.")
             handler.quit()
             return
         else:
+            os.system('cls' if os.name == 'nt' else 'clear')
             handler.navigate_to("main")
             return
 
@@ -33,9 +36,11 @@ def show_results(handler):
         try:
             user_input = input("Do you want a review? (y/n): ").strip().lower()
             if user_input == 'y':
+                os.system('cls' if os.name == 'nt' else 'clear')
                 handler.navigate_to("review")
                 wait_for_user = False
             elif user_input == 'n':
+                os.system('cls' if os.name == 'nt' else 'clear')
                 handler.navigate_to("main")
                 wait_for_user = False
             else:

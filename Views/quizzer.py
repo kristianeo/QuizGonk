@@ -40,5 +40,5 @@ def game_loop(handler):
                     print("Please enter a number from 1-4...")
             except ValueError:
                 print("Please enter a number from 1-4...")
-
+    os.system('cls' if os.name == 'nt' else 'clear')
     handler.navigate_to('results')
