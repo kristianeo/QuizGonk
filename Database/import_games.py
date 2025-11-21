@@ -3,7 +3,7 @@ import json
 from dotenv import load_dotenv
 import os
 
-def importGames():
+def import_games():
     print("Starting import of games...")
     load_dotenv("../.env")
 
@@ -14,7 +14,7 @@ def importGames():
         database = os.environ.get("DB_NAME")
         )
 
-    with (open('Database/questions.json', 'r') as qj):
+    with (open('questions.json', 'r') as qj):
         data = json.load(qj)
 
     print(f"Loaded {len(data['games'])} games from questions.json")
