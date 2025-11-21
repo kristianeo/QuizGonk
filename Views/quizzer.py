@@ -1,68 +1,37 @@
-from collections import defaultdict
-from Database.import_games import *
 
-load_dotenv("../.env")
+def game_loop(handler):
 
-mydb = pymysql.connect(
-    host = os.environ.get("DB_ADDRESS"),
-    user = os.environ.get("PYTHON_DB_USER"),
-    passwd = os.environ.get("PYTHON_USER_PASSWORD"),
-    database = os.environ.get("DB_NAME")
-    )
+    if not handler.quiz_game_data:
+        handler._load_quiz_game_data()
 
-with (open('Database/questions.json', 'r') as qj):
-    data = json.load(qj)
-def game_loop(selected):
-    global selected_index
-    selected_game = selected
+    question = handler.quiz_game_data
+    for question_num, question_data in enumerate(question, 1):
+        print(question_num)
+        print(question_data)
+
     print("Let's test your knowledge!")
-    cursor = mydb.cursor()
-    query = """
-            SELECT option_text, options.questionID
-            FROM QuizzerQuestions.options
-                     JOIN QuizzerQuestions.questions ON options.questionID = questions.questionID
-            WHERE gameID = %s
-            """
-    cursor.execute(query, (selected_game,))
-    alternatives = cursor.fetchall()
-    cursor.close()
-
-    alt_list = defaultdict(list)
-    for k, v in alternatives:
-        alt_list[v].append(k)
-    alt_list2 = list(alt_list.values())
-
-    cursor = mydb.cursor()
-    query = """
-            SELECT question, correct_answer, questionID
-            FROM QuizzerQuestions.questions
-            WHERE gameID = %s
-            """
-    cursor.execute(query, (selected_game,))
-    question = cursor.fetchall()
-    cursor.close()
-
-    quest_list = []
-    for q in question:
-        quest_list.append(list(q))
-
-    right_wrong = []
-    answers = []
-    correct = []
+    answers = handler.user_answers
+    right_wrong = handler.results_data
+    correct = handler.review_data
     question_number = 0
-    for (a, b, c), d in zip(quest_list, alt_list2):
-        correct.append(b)
-        print(f"Question {question_number+1}: {a}")
-        for i, j in enumerate(d, 1):
-            print(f"{i}. {j}")
+
+    for i in question:
+        correct.append(i['correct_answer'])
+        print(correct)
+        print(f"Question {question_number+1}: {i['question']}")
+        for j, k in enumerate(i['options'], 1):
+            print(f"{j}. {k}")
+
         question_number += 1
 
         selected_index = int(input("Choose an answer: "))-1
         answers.append(selected_index)
+        print(answers)
 
-        if selected_index == b:
+        if selected_index == i['correct_answer']:
             right_wrong.append("right")
             print(right_wrong)
         else:
             right_wrong.append("wrong")
             print(right_wrong)
+        handler.navigate_to('results')

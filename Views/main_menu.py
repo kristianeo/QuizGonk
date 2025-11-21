@@ -46,7 +46,7 @@ def mainMenu(handler):
         if userInput.isdigit():
             index = int(userInput) - 1
             if 0 <= index < len(games):
-                handler.selected_game = index
+                handler.selected_game = userInput
                 handler.navigate_to("quiz")
                 return
             else:

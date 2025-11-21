@@ -24,8 +24,8 @@ class ViewHandler:
         self.quiz_game_data = []
         self.selected_game = None
         self.user_answers = []
-        self.results_data = {}
-        self.review_data = {}
+        self.results_data = []
+        self.review_data = []
         
         #flag to control the main loop
         self.running = True
