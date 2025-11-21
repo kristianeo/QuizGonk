@@ -16,7 +16,6 @@ def show_results(handler):
     print(f"\nResults Summary:\n\nRight answers: {right_count}\nWrong answers: "
           f"{wrong_count}\nAccuracy: {formatted_accuracy}%\n")
 
-
     wait_for_user = True
     while wait_for_user:
         try:
