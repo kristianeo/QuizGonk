@@ -15,7 +15,8 @@ def show_results(handler):
     accuracy = (right_count/(right_count + wrong_count))*100
     formatted_accuracy = f"{accuracy:.2f}"
 
-    print(f"\nResults Summary:\n\nRight answers: {right_count}\nWrong answers: "
+    print(f"\nResults Summary:\n\nQuestions: {len(results_data_check)}"
+          f"\nRight answers: {right_count}\nWrong answers: "
           f"{wrong_count}\nAccuracy: {formatted_accuracy}%\n")
 
     if wrong_count == 0:
