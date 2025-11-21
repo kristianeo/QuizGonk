@@ -5,9 +5,10 @@ def game_loop(handler):
         handler._load_quiz_game_data()
 
     question = handler.quiz_game_data
-    for question_num, question_data in enumerate(question, 1):
-        print(question_num)
-        print(question_data)
+
+    handler.user_answers = []
+    handler.results_data = []
+    handler.review_data = []
 
     print("Let's test your knowledge!")
     answers = handler.user_answers
@@ -33,5 +34,5 @@ def game_loop(handler):
             print(right_wrong)
         else:
             right_wrong.append("wrong")
-            print(right_wrong)
+
         handler.navigate_to('results')
