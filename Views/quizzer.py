@@ -1,4 +1,5 @@
 import os
+import string
 
 def game_loop(handler):
 
@@ -21,13 +22,39 @@ def game_loop(handler):
         os.system('cls' if os.name == 'nt' else 'clear')
         correct_index.append(i['correct_answer'])
         print(f"Question {question_number+1}: {i['question']}")
-        for j, k in enumerate(i['options'], 1):
-            print(f"{j}. {k}")
+        for o, option in zip(string.ascii_uppercase, i['options']):
+            print(f'{o}. {option}')
         question_number += 1
+
         while True:
             try:
-                selected_index = int(input("Choose an answer: "))-1
-                if 0 <= selected_index < 4:
+                selected_answer = str(input("Choose an answer: ")).lower().strip()
+                if selected_answer == 'a':
+                    selected_index = 0
+                    user_answers.append(selected_index)
+                    if selected_index == i['correct_answer']:
+                        right_wrong.append("right")
+                    else:
+                        right_wrong.append("wrong")
+                    break
+                elif selected_answer == 'b':
+                    selected_index = 1
+                    user_answers.append(selected_index)
+                    if selected_index == i['correct_answer']:
+                        right_wrong.append("right")
+                    else:
+                        right_wrong.append("wrong")
+                    break
+                elif selected_answer == 'c':
+                    selected_index = 2
+                    user_answers.append(selected_index)
+                    if selected_index == i['correct_answer']:
+                        right_wrong.append("right")
+                    else:
+                        right_wrong.append("wrong")
+                    break
+                elif selected_answer == 'd':
+                    selected_index = 3
                     user_answers.append(selected_index)
                     if selected_index == i['correct_answer']:
                         right_wrong.append("right")
@@ -35,9 +62,9 @@ def game_loop(handler):
                         right_wrong.append("wrong")
                     break
                 else:
-                    print("Please enter a number from 1-4...")
+                    print("Please enter option A, B, C or D...")
             except ValueError:
-                print("Please enter a number from 1-4...")
+                print("Please enter option A, B, C or D...")
 
     handler.navigate_to('results')
     os.system('cls' if os.name == 'nt' else 'clear')
