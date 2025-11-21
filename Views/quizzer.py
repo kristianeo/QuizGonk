@@ -20,7 +20,6 @@ def game_loop(handler):
     for i in question:
         os.system('cls' if os.name == 'nt' else 'clear')
         correct_index.append(i['correct_answer'])
-        print(correct_index)
         print(f"Question {question_number+1}: {i['question']}")
         for j, k in enumerate(i['options'], 1):
             print(f"{j}. {k}")
