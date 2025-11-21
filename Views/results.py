@@ -16,6 +16,18 @@ def show_results(handler):
     print(f"\nResults Summary:\n\nRight answers: {right_count}\nWrong answers: "
           f"{wrong_count}\nAccuracy: {formatted_accuracy}%\n")
 
+    if wrong_count == 0:
+        print("Congratulations! You dont need a review.\n")
+        user_input = input("Enter any key to enter main menu. Q or X to quit.")
+        ui = user_input.lower().strip()
+        if ui in ("q", "x"):
+            print("Goodbye.")
+            handler.quit()
+            return
+        else:
+            handler.navigate_to("main")
+            return
+
     wait_for_user = True
     while wait_for_user:
         try:
@@ -23,10 +35,10 @@ def show_results(handler):
             if user_input == 'y':
                 handler.navigate_to("review")
                 wait_for_user = False
-            if user_input == 'n':
+            elif user_input == 'n':
                 handler.navigate_to("main")
                 wait_for_user = False
             else:
-                print("Please select yes for review, or chose no to go back to main menu.")
+                print("Invalid input. Please select yes for review, or chose no to go back to main menu.")
         except ValueError:
-            print("Please select yes for review, or chose no to go to main menu.")
+            print("Invalid input. Please select yes for review, or chose no to go to main menu.")
