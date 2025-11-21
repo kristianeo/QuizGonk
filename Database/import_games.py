@@ -55,3 +55,4 @@ def import_games():
     cursor.close()
     mydb.close()
     print("Import completed successfully!")
+    os.system('cls' if os.name == 'nt' else 'clear')

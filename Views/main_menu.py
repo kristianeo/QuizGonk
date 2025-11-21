@@ -1,4 +1,4 @@
-
+import os
 def mainMenu(handler):
     # Load quiz summary if not already loaded
     if not handler.quiz_summary.get('games'):
@@ -41,6 +41,7 @@ def mainMenu(handler):
         if ui == "m":
             handler.selected_game = "m"
             handler.navigate_to("quiz")
+            os.system('cls' if os.name == 'nt' else 'clear')
             return
 
         if userInput.isdigit():
@@ -48,6 +49,8 @@ def mainMenu(handler):
             if 0 <= index < len(games):
                 handler.selected_game = userInput
                 handler.navigate_to("quiz")
+                os.system('cls' if os.name == 'nt' else 'clear')
+                
                 return
             else:
                 print(f"Please select a number between 1 and {len(games)}.")
