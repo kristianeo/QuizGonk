@@ -18,7 +18,7 @@ A terminal-based quiz application built with Python and curses, featuring an int
 
 - **Interactive Terminal UI**: Beautiful curses-based interface with box drawings and arrow key navigation
 - **Multiple Quiz Modes**: Choose from specific game categories or take a mixed quiz with random questions
-- **Review System**: Detailed review of incorrect answers with correct/incorrect indicators
+- **Review System**: Review of incorrect answers with correct/incorrect indicators
 
 ## 🛠️ Technologies Used
 
@@ -82,9 +82,9 @@ Before running this application, make sure you have the following installed:
      SOURCE Database/init.sql
      ```
 
-2. **Import quiz data** (optional):
+2. **Import quiz data**:
    - The application includes a script to import games and questions
-   - This runs automatically on first startup
+   - This runs automatically on every startup, importing games from JSON.
 
 ## 🚀 Usage
 
@@ -98,16 +98,13 @@ uv run python main.py
 python main.py
 ```
 
-### Navigation Guide
+## Navigation Guide
 
 - **Main Menu**:
-  - Use ↑/↓ arrow keys to select quiz options
-  - Press Enter to confirm selection
   - Choose from specific games, mixed quiz, or quit
 
 - **Quiz Mode**:
-  - Use ↑/↓ arrows to highlight answer choices
-  - Press Enter to submit your answer
+  - Chose answer with A,B,C or D
   - Questions advance automatically
 
 - **Results Screen**:
@@ -120,29 +117,6 @@ python main.py
   - Correct answers are marked with "<--- Correct"
   - Your answers are marked with "<--- You answered"
 
-
-## 📁 Project Structure
-
-```
-QuizGonk/
-├── main.py                 # Application entry point
-├── view_handler.py         # Main application logic and state management
-├── requirements.txt        # Python dependencies
-├── README.md              # This file
-├── .env.example           # Environment template
-├── Database/
-│   ├── init.sql           # Database schema
-│   ├── import_games.py    # Data import script
-│   └── questions.json     # Quiz data (optional)
-└── Views/
-    ├── main_menu.py       # Main menu interface
-    ├── quizzer.py         # Quiz gameplay logic
-    ├── results.py         # Results display
-    └── review.py          # Answer review system
-```
-
-
----
 
 **Authors**: Kristiane & Thomas
 
