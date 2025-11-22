@@ -5,6 +5,7 @@ def mainMenu(handler):
         handler._load_quiz_summary()
     
     games = handler.quiz_summary.get('games', [])
+    handler.quiz_game_data = []
     
     while True:
         try:
