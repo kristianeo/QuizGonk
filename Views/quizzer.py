@@ -3,8 +3,8 @@ import string
 
 def game_loop(handler):
 
-    if not handler.quiz_game_data:
-        handler._load_quiz_game_data()
+
+    handler._load_quiz_game_data()
 
     question = handler.quiz_game_data
 
