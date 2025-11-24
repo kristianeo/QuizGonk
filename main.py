@@ -1,7 +1,9 @@
+from blessed import Terminal
 from view_handler import ViewHandler
 from Database.import_games import import_games
 
 if __name__ == "__main__":
     import_games()
-    app = ViewHandler()
+    term = Terminal()
+    app = ViewHandler(term)
     app.run()
