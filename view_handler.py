@@ -5,9 +5,10 @@ import os
 load_dotenv(".env")
 
 class ViewHandler:
-    def __init__(self):
+    def __init__(self, term):
+        self.term = term
         self.current_view = "main"
-        
+
         #Database connection settings
         self.db_config = {
             'host': os.environ.get("DB_ADDRESS"),
