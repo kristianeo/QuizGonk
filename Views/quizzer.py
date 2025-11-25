@@ -1,9 +1,10 @@
 import os
 import string
+from tkinter import *
 
-def game_loop(handler):
+def game_loop(handler, root):
 
-
+    frame = Frame(root)
     handler._load_quiz_game_data()
 
     question = handler.quiz_game_data
@@ -12,7 +13,9 @@ def game_loop(handler):
     handler.results_data = []
     handler.review_data = []
 
-    print("Let's test your knowledge!")
+    label_start = Label(root, text="Let's test your knowledge!")
+    label_start.pack()
+
     user_answers = handler.user_answers
     right_wrong = handler.results_data
     correct_index = handler.review_data
@@ -21,50 +24,26 @@ def game_loop(handler):
     for i in question:
         os.system('cls' if os.name == 'nt' else 'clear')
         correct_index.append(i['correct_answer'])
-        print(f"Question {question_number+1}: {i['question']}")
+        question_label = Label(frame, text=f"Question {question_number+1}: {i['question']}")
+        question_label.pack()
         for o, option in zip(string.ascii_uppercase, i['options']):
-            print(f'{o}. {option}')
+            options_button = Button(frame, text=f'{o}. {option}', command=lambda: push_button(handler, o))
+            options_button.pack()
         question_number += 1
 
-        while True:
-            try:
-                selected_answer = str(input("Choose an answer: ")).lower().strip()
-                if selected_answer == 'a':
-                    selected_index = 0
-                    user_answers.append(selected_index)
-                    if selected_index == i['correct_answer']:
-                        right_wrong.append("right")
-                    else:
-                        right_wrong.append("wrong")
-                    break
-                elif selected_answer == 'b':
-                    selected_index = 1
-                    user_answers.append(selected_index)
-                    if selected_index == i['correct_answer']:
-                        right_wrong.append("right")
-                    else:
-                        right_wrong.append("wrong")
-                    break
-                elif selected_answer == 'c':
-                    selected_index = 2
-                    user_answers.append(selected_index)
-                    if selected_index == i['correct_answer']:
-                        right_wrong.append("right")
-                    else:
-                        right_wrong.append("wrong")
-                    break
-                elif selected_answer == 'd':
-                    selected_index = 3
-                    user_answers.append(selected_index)
-                    if selected_index == i['correct_answer']:
-                        right_wrong.append("right")
-                    else:
-                        right_wrong.append("wrong")
-                    break
-                else:
-                    print("Please enter option A, B, C or D...")
-            except ValueError:
-                print("Please enter option A, B, C or D...")
+def push_button(handler, o):
+    selected_answer = o
+    if selected_answer == 'A':
+        selected_index = 0
+        handler.user_answers.append(selected_index)
+    if selected_answer == 'B':
+        selected_index = 1
+        handler.user_answers.append(selected_index)
+    if selected_answer == 'C':
+        selected_index = 2
+        handler.user_answers.append(selected_index)
+    if selected_answer == 'D':
+        selected_index = 3
+        handler.user_answers.append(selected_index)
 
-    handler.navigate_to('results')
-    os.system('cls' if os.name == 'nt' else 'clear')
+    return Frame

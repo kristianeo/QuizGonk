@@ -1,13 +1,34 @@
+import tkinter
+
 import pymysql
 from dotenv import load_dotenv
 import os
+from tkinter import *
+from Views.main_menu import mainMenu
+from Views.quizzer import game_loop
+from Views.results import show_results
+from Views.review import show_review
 
 load_dotenv(".env")
 
-class ViewHandler:
-    def __init__(self):
+class ViewHandler(tkinter.Frame):
+    def __init__(self, root):
+        tkinter.Frame.__init__(self, root)
+        self.root = root
+        self.root.title('QuizGonk')
+        self.frames = {}
         self.current_view = "main"
-        
+
+        mainframe = tkinter.Frame(self)
+        mainframe.grid(column=0, row=0, sticky="WENS")
+        mainframe.grid_propagate(False)
+
+        self.frames["main"] = mainMenu(self.root, self)
+        self.frames["quiz"] = game_loop(self.root, self)
+        self.frames["review"] = show_review(self.root)
+        self.frames["results"] = show_results(self.root)
+
+
         #Database connection settings
         self.db_config = {
             'host': os.environ.get("DB_ADDRESS"),
@@ -26,7 +47,11 @@ class ViewHandler:
         self.user_answers = []
         self.results_data = []
         self.review_data = []
-        
+        self.f1 = Frame(self.root)
+        self.f2 = Frame(self.root)
+        self.f3 = Frame(self.root)
+        self.f4 = Frame(self.root)
+
         #flag to control the main loop
         self.running = True
     
@@ -116,25 +141,15 @@ class ViewHandler:
 
     def navigate_to(self, view_name):
         self.current_view = view_name
-    
+        if self.current_view:
+            self.frames[view_name].pack_forget()
+        frame = self.frames[view_name]
+        frame.pack(fill="both", expand=True)
+        self.current_view = frame
+
     def quit(self):
         self.running = False
+        return
     
     def run(self):
-        from Views.main_menu import mainMenu
-        from Views.quizzer import game_loop
-        from Views.results import show_results
-        from Views.review import show_review
-        
-        while self.running:
-            if self.current_view == "main":
-                mainMenu(self)
-            elif self.current_view == "quiz":
-                game_loop(self)
-            elif self.current_view == "results":
-                show_results(self)
-            elif self.current_view == "review":
-                show_review(self)
-            else:
-                print(f"Unknown view: {self.current_view}")
-                self.current_view = "main"
+        self.navigate_to('main')
