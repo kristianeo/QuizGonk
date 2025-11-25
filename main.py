@@ -4,4 +4,4 @@ from Database.import_games import import_games
 if __name__ == "__main__":
     import_games()
     app = ViewHandler()
-    app.run()
+    app.mainloop()
