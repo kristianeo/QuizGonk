@@ -1,8 +1,15 @@
-# 🧠 QuizGonk
+TODO:
+- Add process
+- Add reflections
+- Remove references to curses, replace with Blessed
+- Imports: per the task description, list imports (Blessed, the python wrapper for c curses)
+- Update requirements.txt
+
+# QuizGonk
 
 A terminal-based quiz application built with Python and curses, featuring an interactive text-based interface for testing knowledge across various topics.
 
-## 📚 Table of Contents
+## Table of Contents
 
 - [Features](#features)
 - [Technologies Used](#technologies-used)
@@ -11,23 +18,27 @@ A terminal-based quiz application built with Python and curses, featuring an int
 - [Environment Setup](#environment-setup)
 - [Database Setup](#database-setup)
 - [Usage](#usage)
-- [Project Structure](#project-structure)
-- [Contributing](#contributing)
+- [Navigation Guide](#navigation-guide)
+- [Authors](#authors)
+- [Process](#process)
+- [Reflections](#reflections)
+- [Sources](#sources)
 
-## ✨ Features
+## Features
 
 - **Interactive Terminal UI**: Beautiful curses-based interface with box drawings and arrow key navigation
 - **Multiple Quiz Modes**: Choose from specific game categories or take a mixed quiz with random questions
 - **Review System**: Review of incorrect answers with correct/incorrect indicators
 
-## 🛠️ Technologies Used
+## Technologies Used
 
 - **Python 3.9+**
-- **MySQL**: Database for storing quiz data
-- **PyMySQL**: MySQL connector for Python
-- **python-dotenv**: Environment variable management
+- **MySQL**: Database for storing quiz data.
+- **PyMySQL**: MySQL connector for Python.
+- **python-dotenv**: Environment variable management.
+- **Blessed**: The python wrapper for c curses.
 
-## 📋 Prerequisites
+## Prerequisites
 
 Before running this application, make sure you have the following installed:
 
@@ -36,7 +47,7 @@ Before running this application, make sure you have the following installed:
 - **Git** (for cloning the repository)
 - **uv** (recommended) or **pip** (for package management)
 
-## 📦 Installation
+## Installation
 
 1. **Clone the Repository**:
    ```bash
@@ -58,7 +69,7 @@ Before running this application, make sure you have the following installed:
    pip install -r requirements.txt
    ```
 
-## 🔧 Environment Setup
+## Environment Setup
 
 1. **Copy the environment template**:
    ```bash
@@ -73,7 +84,7 @@ Before running this application, make sure you have the following installed:
    DB_NAME=QuizzerQuestions
    ```
 
-## 🗄️ Database Setup
+## Database Setup
 
 1. **Create the database**:
    - Log into your MySQL shell
@@ -86,7 +97,7 @@ Before running this application, make sure you have the following installed:
    - The application includes a script to import games and questions
    - This runs automatically on every startup, importing games from JSON.
 
-## 🚀 Usage
+## Usage
 
 ### Running the Application
 
@@ -118,6 +129,35 @@ python main.py
   - Your answers are marked with "<--- You answered"
 
 
-**Authors**: Kristiane & Thomas
+## Authors 
+   Kristiane Olsen  [GitHub](https://github.com/KristianeO)
 
-**Sources**: [Stack Overflow - Share Streamlit can't find pkl file](https://stackoverflow.com/questions/69768380/share-streamlit-cant-find-pkl-file)
+
+   Thomas Eikhaugen [GitHub](https://github.com/Eikhaugen)
+
+
+## Process
+
+### Planning:
+
+### Sprint 1:
+
+### Testing:
+
+### Sprint 2:
+
+
+## Reflections
+- (Remove) For contributions and reflection each team member should write one
+paragraph describing their role in the project.
+This should be followed by a second paragraph describing any particular
+technical challenges they individually encountered, and how they overcame
+them.
+
+### Kristiane:
+
+### Thomas:
+
+## Sources
+ [Stack Overflow - Share Streamlit can't find pkl file](https://stackoverflow.com/questions/69768380/share-streamlit-cant-find-pkl-file)
+
