@@ -1,4 +1,6 @@
 import os
+import string
+
 
 def show_review(handler):
     term = handler.term
@@ -24,11 +26,11 @@ def show_review(handler):
         while True:
             while 0 <= current < total_wrong:
                 print(term.clear)
-                print(term.center(f"You got {total_wrong} questions wrong!"))
+                print(term.center(f"You got {total_wrong} questions wrong!") + term.normal)
                 print(term.center("Let's review them:"))
                 print()
                 question = questions[current]
-                print(term.center(f"\nQuestion {current + 1}: {question.get('question', '<no question>')}"))
+                print(term.center(f"Question {current + 1}: {question.get('question', '<no question>')}"))
                 print()
 
                 correct_index = question.get('correct_answer')
@@ -36,14 +38,15 @@ def show_review(handler):
                 if 0 <= current < len(user_answers):
                     user_index = user_answers[current]
 
-                for index, option in enumerate(question.get('options', [])):
-                    markers = []
-                    if correct_index is not None and index == correct_index:
-                        markers.append("<--- Correct")
-                    if user_index is not None and index == user_index:
-                        markers.append("<--- You answered")
-                    marker_text = " | ".join(markers)
-                    print(term.center(f"{index + 1}. {option} {marker_text}."))
+                for letter, (index, option) in zip(string.ascii_uppercase, enumerate(question.get('options', []))):
+                    if index == correct_index:
+                        colored_option = term.green + f"{letter}. {option}" + term.normal
+                    elif index == user_index:
+                        colored_option = term.red + f"{letter}. {option}" + term.normal
+                    else:
+                        colored_option = f'{letter}. {option}'
+                    line = colored_option
+                    print(term.center(line))
 
                 print()
                 print(term.center(term.grey + "←/→ to Navigate | M for main menu | Q or X to quit" + term.normal))
