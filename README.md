@@ -1,7 +1,6 @@
 TODO:
 - Add process
 - Add reflections
-- Remove references to curses, replace with Blessed
 - Imports: per the task description, list imports (Blessed, the python wrapper for c curses)
 - Update requirements.txt
 
