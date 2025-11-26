@@ -11,7 +11,6 @@ def game_loop(handler):
     handler.review_data = []
 
     with term.fullscreen(), term.cbreak(), term.hidden_cursor():
-        print(term.center("Let's test your knowledge!" + term.normal))
         for question_number, question in enumerate(question, start=1):
             handler.review_data.append(question['correct_answer'])
             options = question['options']
