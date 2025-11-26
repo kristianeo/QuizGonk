@@ -27,9 +27,9 @@ def show_review(handler):
             while 0 <= current < total_wrong:
                 print(term.clear)
                 print(term.center(f"You got {total_wrong} questions wrong!") + term.normal)
-                print(term.center("Let's review them:"))
                 print()
                 question = questions[current]
+                print(term.center(f'Question {current + 1} of {total_wrong}:'))
                 print(term.center(f"Question {current + 1}: {question.get('question', '<no question>')}"))
                 print()
 
