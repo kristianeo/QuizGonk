@@ -1,70 +1,58 @@
-import os
 import string
 
 def game_loop(handler):
-
+    term = handler.term
 
     handler._load_quiz_game_data()
-
     question = handler.quiz_game_data
 
     handler.user_answers = []
     handler.results_data = []
     handler.review_data = []
 
-    print("Let's test your knowledge!")
-    user_answers = handler.user_answers
-    right_wrong = handler.results_data
-    correct_index = handler.review_data
-    question_number = 0
+    with term.fullscreen(), term.cbreak(), term.hidden_cursor():
+        print(term.center("Let's test your knowledge!" + term.normal))
+        for question_number, question in enumerate(question, start=1):
+            handler.review_data.append(question['correct_answer'])
+            options = question['options']
+            selected_index = 0
+            while True:
+                print(term.clear)
+                print(term.center(f"Question {question_number}: {question['question']}" + term.normal))
+                print()
 
-    for i in question:
-        os.system('cls' if os.name == 'nt' else 'clear')
-        correct_index.append(i['correct_answer'])
-        print(f"Question {question_number+1}: {i['question']}")
-        for o, option in zip(string.ascii_uppercase, i['options']):
-            print(f'{o}. {option}')
-        question_number += 1
+                for i, option in enumerate(options):
+                    label = string.ascii_uppercase[i]
+                    max_label_len = max(len(f"{string.ascii_uppercase[j]}. ") for j in range(len(options)))
+                    max_option_len = max(len(opt) for opt in options)
+                    text_label = f"{label}. ".ljust(max_label_len)
+                    text_option = option.center(max_option_len)
+                    line = f"{text_label}{text_option}"
+                    if i == selected_index:
+                        print(term.center(term.black_on_white + f"➤ {line}" + term.normal))
+                    else:
+                        print(term.center(f"  {line}" + term.normal))
+                
+                print()
+                print(term.center(term.grey + "↑/↓ Navigate | Enter to select" + term.normal))
 
-        while True:
-            try:
-                selected_answer = str(input("Choose an answer: ")).lower().strip()
-                if selected_answer == 'a':
-                    selected_index = 0
-                    user_answers.append(selected_index)
-                    if selected_index == i['correct_answer']:
-                        right_wrong.append("right")
-                    else:
-                        right_wrong.append("wrong")
-                    break
-                elif selected_answer == 'b':
-                    selected_index = 1
-                    user_answers.append(selected_index)
-                    if selected_index == i['correct_answer']:
-                        right_wrong.append("right")
-                    else:
-                        right_wrong.append("wrong")
-                    break
-                elif selected_answer == 'c':
-                    selected_index = 2
-                    user_answers.append(selected_index)
-                    if selected_index == i['correct_answer']:
-                        right_wrong.append("right")
-                    else:
-                        right_wrong.append("wrong")
-                    break
-                elif selected_answer == 'd':
-                    selected_index = 3
-                    user_answers.append(selected_index)
-                    if selected_index == i['correct_answer']:
-                        right_wrong.append("right")
-                    else:
-                        right_wrong.append("wrong")
+                key = term.inkey()
+                if key.code == term.KEY_UP:
+                    selected_index = (selected_index - 1) % len(options)
+                elif key.code == term.KEY_DOWN:
+                    selected_index = (selected_index + 1) % len(options)
+                elif key.code == term.KEY_ENTER:
+                    handler.user_answers.append(selected_index)
+                    is_correct = selected_index == question['correct_answer']
+                    handler.results_data.append("right" if is_correct else "wrong")
                     break
                 else:
-                    print("Please enter option A, B, C or D...")
-            except ValueError:
-                print("Please enter option A, B, C or D...")
+                    key_str = str(key).lower()
+                    if key_str:
+                        selected_index = ord(key_str[0]) - ord('a')
+                        handler.user_answers.append(selected_index)
+                        is_correct = selected_index == question['correct_answer']
+                        handler.results_data.append("right" if is_correct else "wrong")
+                        break
+        handler.navigate_to('results')
 
-    handler.navigate_to('results')
-    os.system('cls' if os.name == 'nt' else 'clear')
