@@ -1,5 +1,3 @@
-import os
-
 def show_results(handler):
     term = handler.term
     results_data_check = handler.results_data
