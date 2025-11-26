@@ -128,7 +128,7 @@ python main.py
   - Press 'q' or 'x' to quit
 
 
-## Authors 
+## Authors
    Kristiane Olsen  [GitHub](https://github.com/KristianeO)
 
 
@@ -137,13 +137,11 @@ python main.py
 
 ## Process
 
-### Planning:
-
-### Sprint 1:
+### Planning 1:
 
 ### Testing:
 
-### Sprint 2:
+### Planning 2:
 
 
 ## Reflections
