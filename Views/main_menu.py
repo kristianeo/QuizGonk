@@ -56,7 +56,7 @@ def mainMenu(handler):
                         print(term.center(f"  {option['label']}"))
             
             print()
-            print(term.center(term.cyan + "↑/↓ Navigate | Enter to select | Q to quit" + term.normal))
+            print(term.center(term.bold + term.cyan + "↑/↓ Navigate | Enter to select | Q to quit" + term.normal))
             
             key = term.inkey()
             
