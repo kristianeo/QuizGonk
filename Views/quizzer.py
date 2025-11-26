@@ -33,7 +33,7 @@ def game_loop(handler):
                         print(term.center(f"  {line}" + term.normal))
                 
                 print()
-                print(term.center(term.grey + "↑/↓ Navigate | Enter to select" + term.normal))
+                print(term.center(term.cyan + "↑/↓ Navigate | Enter to select" + term.normal))
 
                 key = term.inkey()
                 if key.code == term.KEY_UP:
