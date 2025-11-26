@@ -1,10 +1,7 @@
-import os
 import string
-
 
 def show_review(handler):
     term = handler.term
-    print(term.center("Review"))
     print()
 
     user_answers = handler.user_answers
@@ -25,7 +22,7 @@ def show_review(handler):
         while True:
             while 0 <= current < total_wrong:
                 print(term.clear)
-                print(term.center(f"You got {total_wrong} questions wrong!") + term.normal)
+                print(term.center(term.bold + f"You got {total_wrong} questions wrong!") + term.normal)
                 print()
                 question = questions[current]
                 print(term.center(f'Question {current + 1} of {total_wrong}:'))
@@ -48,7 +45,7 @@ def show_review(handler):
                     print(term.center(line))
 
                 print()
-                print(term.center(term.grey + "←/→ to Navigate | M for main menu | Q or X to quit" + term.normal))
+                print(term.center(term.cyan + "→/← to Navigate | M for main menu | Q or X to quit" + term.normal))
 
                 key = term.inkey()
 
