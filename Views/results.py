@@ -85,9 +85,9 @@ def show_results(handler):
 
             print()
             print()
+            print(term.center(f"Total questions: {len(results_data_check)}"))  
             print(term.center(f"Right answers: {right_count}"))
-            print(term.center(f"Wrong answers: {wrong_count}"))
-            print(term.center(f"Total questions: {len(results_data_check)}"))            
+            print(term.center(f"Wrong answers: {wrong_count}"))          
             print(term.center(f"Accuracy: {formatted_accuracy}%"))
             print()
             
