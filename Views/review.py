@@ -53,16 +53,9 @@ def show_review(handler):
                 key = term.inkey()
 
                 if key.code == term.KEY_LEFT:
-                    if current > 0:
-                        current -= 1
-                    else:
-                        print(term.center("Already at first question."))
+                    current = (current -1) % len(questions)
                 elif key.code == term.KEY_RIGHT:
-                    if current < total_wrong - 1:
-                        current += 1
-                    else:
-                        print(term.center("Already at last question."))
-                        return
+                    current = (current + 1) % len(questions)
                 elif key.lower() in ('q', 'x'):
                     handler.quit()
                     return
