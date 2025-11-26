@@ -13,7 +13,6 @@ def show_review(handler):
 
     keep = [i for i, val in enumerate(right_wrong) if val == "wrong"]
     user_answers = [user_answers[i] for i in keep]
-    right_wrong = [right_wrong[i] for i in keep]
     questions = [questions[i] for i in keep]
 
     current = 0
@@ -30,7 +29,7 @@ def show_review(handler):
                 print()
                 question = questions[current]
                 print(term.center(f'Question {current + 1} of {total_wrong}:'))
-                print(term.center(f"Question {current + 1}: {question.get('question', '<no question>')}"))
+                print(term.center(f"{question.get('question', '<no question>')}"))
                 print()
 
                 correct_index = question.get('correct_answer')
