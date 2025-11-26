@@ -7,7 +7,7 @@ TODO:
 
 # QuizGonk
 
-A terminal-based quiz application built with Python and curses, featuring an interactive text-based interface for testing knowledge across various topics.
+A terminal-based quiz application built with Python and Blessed, featuring an interactive text-based interface for testing knowledge across various topics.
 
 ## Table of Contents
 
@@ -26,7 +26,7 @@ A terminal-based quiz application built with Python and curses, featuring an int
 
 ## Features
 
-- **Interactive Terminal UI**: Beautiful curses-based interface with box drawings and arrow key navigation
+- **Interactive Terminal UI**: Beautiful Blessed-based interface with ascii-art and key navigation
 - **Multiple Quiz Modes**: Choose from specific game categories or take a mixed quiz with random questions
 - **Review System**: Review of incorrect answers with correct/incorrect indicators
 
@@ -36,7 +36,7 @@ A terminal-based quiz application built with Python and curses, featuring an int
 - **MySQL**: Database for storing quiz data.
 - **PyMySQL**: MySQL connector for Python.
 - **python-dotenv**: Environment variable management.
-- **Blessed**: The python wrapper for c curses.
+- **Blessed**: Practical library for making terminal apps.
 
 ## Prerequisites
 
@@ -123,10 +123,10 @@ python main.py
   - Choose to review incorrect answers or return to main menu
 
 - **Review Screen**:
-  - Press 'n' for next question, 'p' for previous
+  - Use key arrows to loop through wrongly answered questions
+  - Your answers are highlighted in red, while correct answers are green
   - Press 'm' to return to main menu
-  - Correct answers are marked with "<--- Correct"
-  - Your answers are marked with "<--- You answered"
+  - Press 'q' or 'x' to quit
 
 
 ## Authors 
@@ -159,7 +159,5 @@ them.
 ### Thomas:
 
 ## Sources
- [Stack Overflow - Share Streamlit can't find pkl file](https://stackoverflow.com/questions/69768380/share-streamlit-cant-find-pkl-file)
-
-**Sources**: [Stack Overflow - Share Streamlit can't find pkl file](https://stackoverflow.com/questions/69768380/share-streamlit-cant-find-pkl-file)
-https://stackoverflow.com/questions/63875471/enumerate-with-letters-instead-of-numbers
+[Stack Overflow - Share Streamlit can't find pkl file](https://stackoverflow.com/questions/69768380/share-streamlit-cant-find-pkl-file)
+[Stack Overflow - Enumerate with letters instead of numbers [duplicate]](https://stackoverflow.com/questions/63875471/enumerate-with-letters-instead-of-numbers)
