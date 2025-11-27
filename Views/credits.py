@@ -21,11 +21,14 @@ def show_credits(handler):
         print()
         print(term.center(term.italic +  'A game made by Thomas Eikhaugen and Kristiane Olsen' + term.normal))
 
-        time.sleep(3)
+        time.sleep(5)
 
         print(term.clear)
+        print()
+        print()
+        print()
         print(term.center('*A special thanks to Craig*'))
 
-        time.sleep(3)
+        time.sleep(5)
 
         handler.quit()
