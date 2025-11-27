@@ -20,10 +20,6 @@ def mainMenu(handler):
         'label': f"Mixed game ({mixed_count} random questions)",
         'value': 'm'
     })
-    menu_options.append({
-        'label': "Quit",
-        'value': 'q'
-    })
     
     selected_index = 0
     
