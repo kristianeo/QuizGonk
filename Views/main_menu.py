@@ -79,7 +79,7 @@ def mainMenu(handler):
                     handler.navigate_to("quiz")
                     return
             elif key.lower() in ('q', 'x'):
-                handler.quit()
+                handler.navigate_to('credits')
                 return
             elif key.isdigit():
                 index = int(key) - 1

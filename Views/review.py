@@ -54,7 +54,7 @@ def show_review(handler):
                 elif key.code == term.KEY_RIGHT:
                     current = (current + 1) % len(questions)
                 elif key.lower() in ('q', 'x'):
-                    handler.quit()
+                    handler.navigate_to('credits')
                     return
                 elif key.lower() == 'm':
                     handler.navigate_to("menu")

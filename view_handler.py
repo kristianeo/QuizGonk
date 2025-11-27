@@ -126,6 +126,7 @@ class ViewHandler:
         from Views.quizzer import game_loop
         from Views.results import show_results
         from Views.review import show_review
+        from Views.credits import show_credits
         
         while self.running:
             if self.current_view == "main":
@@ -136,6 +137,8 @@ class ViewHandler:
                 show_results(self)
             elif self.current_view == "review":
                 show_review(self)
+            elif self.current_view =="credits":
+                show_credits(self)
             else:
                 print(f"Unknown view: {self.current_view}")
                 self.current_view = "main"

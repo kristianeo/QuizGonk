@@ -112,5 +112,5 @@ def show_results(handler):
                     handler.navigate_to("main")
                     return
                 elif key.lower() in ('q', 'x'):
-                    handler.quit()
+                    handler.navigate_to('credits')
                     return
