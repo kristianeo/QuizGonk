@@ -19,7 +19,8 @@ def show_credits(handler):
             print(term.center(term.bold + term.cyan + line + term.normal))
 
         print()
-        print(term.center(term.italic +  'A game made by Thomas Eikhaugen and Kristiane Olsen' + term.normal))
+        # I tried to make this italic but apparently it's not supported:
+        print(term.center('A game made by Thomas Eikhaugen and Kristiane Olsen'))
 
         time.sleep(5)
 
