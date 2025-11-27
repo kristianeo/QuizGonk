@@ -1,6 +1,8 @@
-import os
+import string
+
 def show_review(handler):
-    print("Review")
+    term = handler.term
+    print()
 
     user_answers = handler.user_answers
     right_wrong = handler.results_data
@@ -8,52 +10,52 @@ def show_review(handler):
 
     keep = [i for i, val in enumerate(right_wrong) if val == "wrong"]
     user_answers = [user_answers[i] for i in keep]
-    right_wrong = [right_wrong[i] for i in keep]
     questions = [questions[i] for i in keep]
 
-    if not questions:
-        print("No wrong answers to review.")
-        handler.navigate_to('main')
-        return
-
     current = 0
-    while True:
+    with (term.fullscreen(), term.cbreak(), term.hidden_cursor()):
         total_wrong = len(questions)
-        print("You got", total_wrong, "questions wrong!")
-        print("Let's review them")
+        while True:
+            while 0 <= current < total_wrong:
+                print(term.clear)
+                print(term.center(term.bold + f"You got {total_wrong} questions wrong!") + term.normal)
+                print()
+                question = questions[current]
+                print(term.center(f'Question {current + 1} of {total_wrong}:'))
+                print(term.center(f"{question.get('question', '<no question>')}"))
+                print()
 
-        while 0 <= current < total_wrong:
-            os.system('cls' if os.name == 'nt' else 'clear')
-            question = questions[current]
-            print("\nQuestion {}: {}".format(current + 1, question.get('question', '<no question>')))
+                correct_index = question.get('correct_answer')
+                user_index = None
+                if 0 <= current < len(user_answers):
+                    user_index = user_answers[current]
 
-            correct_index = question.get('correct_answer')
-            user_index = None
-            if 0 <= current < len(user_answers):
-                user_index = user_answers[current]
+                #Puts letters A-D on options, instead of using indices and getting 1-4
+                for letter, (index, option) in zip(string.ascii_uppercase, enumerate(question.get('options', []))):
+                    if index == correct_index:
+                        # Turns the correct option green
+                        colored_option = term.green + f"{letter}. {option}" + term.normal
+                    elif index == user_index:
+                        # Turns the wronly answered option red
+                        colored_option = term.red + f"{letter}. {option}" + term.normal
+                    else:
+                        colored_option = f'{letter}. {option}' #the other options are standard color
+                    line = colored_option
+                    print(term.center(line))
 
-            for index, option in enumerate(question.get('options', [])):
-                markers = []
-                if correct_index is not None and index == correct_index:
-                    markers.append("<--- Correct")
-                if user_index is not None and index == user_index:
-                    markers.append("<--- You answered")
-                marker_text = " | ".join(markers)
-                print("  {}. {} {}".format(index + 1, option, marker_text))
+                print()
+                print(term.center(term.bold + term.cyan + "→/← to Navigate | M for main menu | Q or X to quit" + term.normal))
 
-            user_input = input("Enter 'n' for next, 'p' for previous, 'm' to return to main menu: ").strip().lower()
+                key = term.inkey()
 
-            if user_input == "n":
-                if current < total_wrong - 1:
-                    current += 1
-                else:
-                    print("Already at last question.")
-            elif user_input =="p":
-                if current > 0:
-                    current -= 1
-                else:
-                    print("Already at first question.")
-            elif user_input == "m":
-                handler.navigate_to('main')
-                os.system('cls' if os.name == 'nt' else 'clear')
-                return
+                if key.code == term.KEY_LEFT:
+                    current = (current -1) % len(questions)
+                elif key.code == term.KEY_RIGHT:
+                    current = (current + 1) % len(questions)
+                elif key.lower() in ('q', 'x'):
+                    handler.navigate_to('credits')
+                    return
+                elif key.lower() == 'm':
+                    handler.navigate_to("menu")
+                    return
+

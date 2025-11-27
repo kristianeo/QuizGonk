@@ -5,9 +5,10 @@ import os
 load_dotenv(".env")
 
 class ViewHandler:
-    def __init__(self):
+    def __init__(self, term):
+        self.term = term
         self.current_view = "main"
-        
+
         #Database connection settings
         self.db_config = {
             'host': os.environ.get("DB_ADDRESS"),
@@ -125,6 +126,7 @@ class ViewHandler:
         from Views.quizzer import game_loop
         from Views.results import show_results
         from Views.review import show_review
+        from Views.credits import show_credits
         
         while self.running:
             if self.current_view == "main":
@@ -135,6 +137,8 @@ class ViewHandler:
                 show_results(self)
             elif self.current_view == "review":
                 show_review(self)
+            elif self.current_view =="credits":
+                show_credits(self)
             else:
                 print(f"Unknown view: {self.current_view}")
                 self.current_view = "main"
