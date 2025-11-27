@@ -7,6 +7,8 @@ TODO:
 
 A terminal-based quiz application built with Python and Blessed, featuring an interactive text-based interface for testing knowledge across various topics.
 
+The first version of the quiz with terminal inputs is available as V1.0 on GitHub.
+
 ## Table of Contents
 
 - [Features](#features)
@@ -116,10 +118,10 @@ python main.py
 ## Navigation Guide
 
 - **Main Menu**:
-  - Choose from specific games, mixed quiz, or quit
+  - Choose from specific games, mixed game, or quit
 
 - **Quiz Mode**:
-  - Chose answer with A,B,C or D
+  - Choose answers using key arrow navigation and enter key
   - Questions advance automatically
 
 - **Results Screen**:
@@ -143,11 +145,32 @@ python main.py
 ## Process
 
 ### Planning 1:
+Before we started, we mapped out the different functions we needed for the game to run:
+- init.sql
+- import_games.py
+- main_menu.py
+- quizzer.py
+- results.py
+- review.py
 
-### Testing:
+After writing said codes, we added a view handler to store variables and functions needed for the program to run. We changed the code in the files listed above to implement the view handler. This eliminated the need of using global variables, and made it easier for the functions to reference each other. 
+
+When the game was running smoothly, we checked for bugs and fixed some minor issues.
+
+### Testing 1:
+After testing the program many times ourselves, we could not find any bugs.
+
+We had a friend test the quiz, who discovered one error: When choosing a new game after previously finishing one, the game would load out the previous gave. This was a quick fix by reloading all the game data at the start of each game loop.
 
 ### Planning 2:
+We wanted to implement a library to make the terminal experience more fun. We agreed that Thomas was going to look into the Curses library, while Kristiane was going to look into tkinter as an option.
 
+After lots of research, we decided not to implement tkinter. It was difficult to get the code running properly in the different frames, and we decided that using tkinter was not the best use of our time.
+
+While researching the Curses library, an option occurred: Blessed. It seemed a bit easier to implement, and it runs better on Windows compared to Curses. Thomas had changed the main menu using Blessed, with a great result. We decided to use Blessed, and changed the program to use this library. 
+
+### Testing 2:
+-coming soon....
 
 ## Reflections
 - (Remove) For contributions and reflection each team member should write one
@@ -158,6 +181,16 @@ them.
 
 ### Kristiane:
 
+#### Contributions:
+To start, I wrote init.sql to get the basic layout of the database, then import_games.py to load the .json data into the database.
+Then I wrote quizzer.py, originally with MySql to load the data from the database. Later this was moved to the view handler, and i rewrote quizzer.py to use the view handler.
+I wrote the initial results screen which is seen in version 1. 
+
+When implementing blessed for version 2, I rewrote the review.py. I also made some minor changes in the different views for a clean esthetic through the game.
+Finally I added a credits screen which is shown before the program quits. 
+
+#### Reflection:
+It had been a great learning opportunity for me to work with someon
 ### Thomas:
 
 ## Sources
