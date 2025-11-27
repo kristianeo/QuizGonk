@@ -184,13 +184,26 @@ them.
 #### Contributions:
 To start, I wrote init.sql to get the basic layout of the database, then import_games.py to load the .json data into the database.
 Then I wrote quizzer.py, originally with MySql to load the data from the database. Later this was moved to the view handler, and i rewrote quizzer.py to use the view handler.
-I wrote the initial results screen which is seen in version 1. 
+I wrote the initial results screen which is seen in version 1.
+I made some minor changes in the view handler to work with the code.
 
-When implementing blessed for version 2, I rewrote the review.py. I also made some minor changes in the different views for a clean esthetic through the game.
+When implementing blessed for version 2, I rewrote review.py. I also made some minor changes in the different views for a clean esthetic through the game.
 Finally I added a credits screen which is shown before the program quits. 
 
 #### Reflection:
-It had been a great learning opportunity for me to work with someon
+It has been a great learning opportunity for me to work with someone who has programmed a game earlier,
+and working on different parts of the same code has been a valuable experience for me.
+I have learned to use Git, which has made the process very smooth.
+
+The first challenge was understanding and learning to use the view handler. 
+Since the main menu already had been edited to use it before I edited quizzer.py, I used it as a template and as I implemented it quickly understood the logic behind it.
+
+The second challenge was implementing Blessed. Again, the main menu had been edited, so I also used this as a template. 
+The logic behind the review screen is a bit different from the main menu, but I figured out through trial and error how to best use it.
+
+Otherwise, in general another challenge has been iteration. 
+A lot of my code has iterations through multiple for loops, but this was also solved through trial and error.
+
 ### Thomas:
 
 ## Sources
