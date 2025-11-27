@@ -35,7 +35,11 @@ A terminal-based quiz application built with Python and Blessed, featuring an in
 - **MySQL**: Database for storing quiz data.
 - **PyMySQL**: MySQL connector for Python.
 - **python-dotenv**: Environment variable management.
+- **os(os.environ)**: Used to return a dictionary of environmental variables.
+- **pathlib**: Used to access path to reach the .json file.
 - **Blessed**: Practical library for making terminal apps.
+- **time**: Timer used for a smooth credits screen.
+- **string**: Used to access ascii-letters to use for options.
 
 ## Prerequisites
 
