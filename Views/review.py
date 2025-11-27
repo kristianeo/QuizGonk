@@ -14,10 +14,6 @@ def show_review(handler):
 
     current = 0
     with (term.fullscreen(), term.cbreak(), term.hidden_cursor()):
-        if not questions:
-            print(term.center("No wrong answers to review."))
-            handler.navigate_to('main')
-            return
         total_wrong = len(questions)
         while True:
             while 0 <= current < total_wrong:
@@ -34,13 +30,16 @@ def show_review(handler):
                 if 0 <= current < len(user_answers):
                     user_index = user_answers[current]
 
+                #Puts letters A-D on options, instead of using indices and getting 1-4
                 for letter, (index, option) in zip(string.ascii_uppercase, enumerate(question.get('options', []))):
                     if index == correct_index:
+                        # Turns the correct option green
                         colored_option = term.green + f"{letter}. {option}" + term.normal
                     elif index == user_index:
+                        # Turns the wronly answered option red
                         colored_option = term.red + f"{letter}. {option}" + term.normal
                     else:
-                        colored_option = f'{letter}. {option}'
+                        colored_option = f'{letter}. {option}' #the other options are standard color
                     line = colored_option
                     print(term.center(line))
 
