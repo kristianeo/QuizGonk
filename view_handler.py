@@ -137,7 +137,7 @@ class ViewHandler:
                 show_results(self)
             elif self.current_view == "review":
                 show_review(self)
-            elif self.current_view =="credits":
+            elif self.current_view =='credits':
                 show_credits(self)
             else:
                 print(f"Unknown view: {self.current_view}")
