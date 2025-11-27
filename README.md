@@ -1,5 +1,4 @@
 TODO:
-- Add process
 - Add reflections
 - Update requirements.txt
 
@@ -40,7 +39,7 @@ The first version of the quiz with terminal inputs is available as V1.0 on GitHu
 
 ## Additional Imports
 - **os(os.environ)**: Used to return a dictionary of environmental variables.
-- **pathlib**: Used to access path to reach the .json file.
+- **pathlib**: Used to access path to reach the JSON file.
 - **time**: Timer used for a smooth credits screen.
 - **string**: Used to access ascii-letters to use for options.
 
@@ -182,7 +181,7 @@ them.
 ### Kristiane:
 
 #### Contributions:
-To start, I wrote init.sql to get the basic layout of the database, then import_games.py to load the .json data into the database.
+To start, I wrote init.sql to get the basic layout of the database, then import_games.py to load the JSON data into the database.
 Then I wrote quizzer.py, originally with MySql to load the data from the database. Later this was moved to the view handler, and i rewrote quizzer.py to use the view handler.
 I wrote the initial results screen which is seen in version 1.
 I made some minor changes in the view handler to work with the code.
