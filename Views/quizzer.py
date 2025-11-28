@@ -40,6 +40,8 @@ def game_loop(handler):
                     selected_index = (selected_index - 1) % len(options)
                 elif key.code == term.KEY_DOWN:
                     selected_index = (selected_index + 1) % len(options)
+                elif key.code == term.KEY_LEFT or key.code == term.KEY_RIGHT:
+                    continue
                 elif key.code == term.KEY_ENTER:
                     handler.user_answers.append(selected_index)
                     is_correct = selected_index == question['correct_answer']
@@ -47,11 +49,12 @@ def game_loop(handler):
                     break
                 else:
                     key_str = str(key).lower()
-                    if key_str:
-                        selected_index = ord(key_str[0]) - ord('a')
-                        handler.user_answers.append(selected_index)
-                        is_correct = selected_index == question['correct_answer']
-                        handler.results_data.append("right" if is_correct else "wrong")
-                        break
+                    if key_str and len(key_str) == 1 and 'a' <= key_str <= 'd':
+                        letter_index = ord(key_str) - ord('a')
+                        if letter_index < len(options):
+                            handler.user_answers.append(letter_index)
+                            is_correct = letter_index == question['correct_answer']
+                            handler.results_data.append("right" if is_correct else "wrong")
+                            break
         handler.navigate_to('results')
 
