@@ -205,6 +205,15 @@ A lot of my code has iterations through multiple for loops, but this was also so
 
 ### Thomas:
 
+#### Contributions:
+I introduced Kristiane to working with git and github. Explained versioning, creating issues, branching and changing branches, checking out earlier commits and explained atomic commits. Once we had set up a working environment using, python uv, I began on the main menu then the review screen. I set up the viewhandler, then refactored the views I had made to utilize it.
+For version 2, I added Blessed to the main menu, the game loop, and the results view. We have both been squashing bugs and improving our own and each other's code as we progressed.
+
+#### Reflection:
+The main challenge came from my initial planning. We started without a clear architecture, which led to deeply nested functions across views and some reliance on globals. This was solved by implementing the view handler, it simplified state management and switching between views, it made the codebase more modular and easier to maintain. Once the view handler was in place, development felt much smoother.
+
+Working with others can also be a challenge when it comes to coordination and communication. I have seriously enjoyed working with Kristiane, creating and sharing tasks has been a breeze. Working on a program of this small scale, switching up who did what task for each iteration has also been a great and fun way of attaining some more insight into python as a programming language.
+
 ## Sources
 [Stack Overflow - Share Streamlit can't find pkl file](https://stackoverflow.com/questions/69768380/share-streamlit-cant-find-pkl-file)
 [Stack Overflow - Enumerate with letters instead of numbers [duplicate]](https://stackoverflow.com/questions/63875471/enumerate-with-letters-instead-of-numbers)
