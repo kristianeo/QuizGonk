@@ -20,10 +20,6 @@ def mainMenu(handler):
         'label': f"Mixed game ({mixed_count} random questions)",
         'value': 'm'
     })
-    menu_options.append({
-        'label': "Quit",
-        'value': 'q'
-    })
     
     selected_index = 0
     
@@ -66,11 +62,7 @@ def mainMenu(handler):
                 selected_index = (selected_index + 1) % len(menu_options)
             elif key.code == term.KEY_ENTER:
                 selected_value = menu_options[selected_index]['value']
-                
-                if selected_value in ('q', 'x'):
-                    handler.quit()
-                    return
-                elif selected_value == 'm':
+                if selected_value == 'm':
                     handler.selected_game = "m"
                     handler.navigate_to("quiz")
                     return
