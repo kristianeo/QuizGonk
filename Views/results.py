@@ -102,7 +102,7 @@ def show_results(handler):
             if wrong_count == 0:
                 print(term.center(term.green + "Congratulations! You got everything right. No review needed." + term.normal))
                 print()
-                print(term.center(term.cyan + term.bold + "Press any key to return to main menu, Q or X to quit" + term.normal))
+                print(term.center(term.cyan + term.bold + "Press any key to return to main menu, Q to quit" + term.normal))
                 key = term.inkey()
                 if key.lower() in ('q', 'x'):
                     handler.quit()
@@ -112,7 +112,7 @@ def show_results(handler):
                     return
             else:
                 print(term.center("Do you want a review? Y for yes, N for no" + term.normal))
-                print(term.center(term.cyan + term.bold + "Y/N | Q or X to quit" + term.normal))
+                print(term.center(term.cyan + term.bold + "Y/N | Q to quit" + term.normal))
                 
                 key = term.inkey()
                 if key.lower() == 'y':

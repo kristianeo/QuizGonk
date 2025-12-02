@@ -44,7 +44,7 @@ def show_review(handler):
                     print(term.center(line))
 
                 print()
-                print(term.center(term.bold + term.cyan + "→/← to Navigate | M for main menu | Q or X to quit" + term.normal))
+                print(term.center(term.bold + term.cyan + "→/← to Navigate | M for main menu | Q to quit" + term.normal))
 
                 key = term.inkey()
 
