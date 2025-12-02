@@ -1,7 +1,3 @@
-TODO:
-- Add reflections
-- Update requirements.txt
-
 # QuizGonk
 
 A terminal-based quiz application built with Python and Blessed, featuring an interactive text-based interface for testing knowledge across various topics.
@@ -169,14 +165,12 @@ After lots of research, we decided not to implement tkinter. It was difficult to
 While researching the Curses library, an option occurred: Blessed. It seemed a bit easier to implement, and it runs better on Windows compared to Curses. Thomas had changed the main menu using Blessed, with a great result. We decided to use Blessed, and changed the program to use this library. 
 
 ### Testing 2:
--coming soon....
+After finishing the game, we had a couple of friends test it.
+One error was found: When choosing the answers for the questions, if you were to press the right (or left) arrow key instead of pressing enter on an option, you would go to the next question without choosing an answer.
+So you could potentially go through the entire quiz without registering any answers, and get 0% correct.
+This was fixed by ignoring these key inputs.
 
 ## Reflections
-- (Remove) For contributions and reflection each team member should write one
-paragraph describing their role in the project.
-This should be followed by a second paragraph describing any particular
-technical challenges they individually encountered, and how they overcame
-them.
 
 ### Kristiane:
 
@@ -192,7 +186,7 @@ Finally I added a credits screen which is shown before the program quits.
 #### Reflection:
 It has been a great learning opportunity for me to work with someone who has programmed a game earlier,
 and working on different parts of the same code has been a valuable experience for me.
-I have learned to use Git, which has made the process very smooth.
+I learned to use Git and GitHub, which has made the process very smooth.
 
 The first challenge was understanding and learning to use the view handler. 
 Since the main menu already had been edited to use it before I edited quizzer.py, I used it as a template and as I implemented it quickly understood the logic behind it.
@@ -200,8 +194,8 @@ Since the main menu already had been edited to use it before I edited quizzer.py
 The second challenge was implementing Blessed. Again, the main menu had been edited, so I also used this as a template. 
 The logic behind the review screen is a bit different from the main menu, but I figured out through trial and error how to best use it.
 
-Otherwise, in general another challenge has been iteration. 
-A lot of my code has iterations through multiple for loops, but this was also solved through trial and error.
+I enjoyed working on this project with Thomas, and discussing different perspectives on how to solve the tasks. 
+I have learned more from this project than I would have working alone. 
 
 ### Thomas:
 
