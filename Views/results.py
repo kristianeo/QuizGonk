@@ -104,7 +104,7 @@ def show_results(handler):
                 print()
                 print(term.center(term.cyan + term.bold + "Press any key to return to main menu, Q to quit" + term.normal))
                 key = term.inkey()
-                if key.lower() in ('q', 'x'):
+                if key.lower() in 'q':
                     handler.quit()
                     return
                 else:
@@ -121,6 +121,6 @@ def show_results(handler):
                 elif key.lower() == 'n':
                     handler.navigate_to("main")
                     return
-                elif key.lower() in ('q', 'x'):
+                elif key.lower() in 'q':
                     handler.navigate_to('credits')
                     return

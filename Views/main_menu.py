@@ -70,7 +70,7 @@ def mainMenu(handler):
                     handler.selected_game = selected_value
                     handler.navigate_to("quiz")
                     return
-            elif key.lower() in ('q', 'x'):
+            elif key.lower() in 'q':
                 handler.navigate_to('credits')
                 return
             elif key.isdigit():

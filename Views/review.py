@@ -52,7 +52,7 @@ def show_review(handler):
                     current = (current -1) % len(questions)
                 elif key.code == term.KEY_RIGHT:
                     current = (current + 1) % len(questions)
-                elif key.lower() in ('q', 'x'):
+                elif key.lower() in 'q':
                     handler.navigate_to('credits')
                     return
                 elif key.lower() == 'm':
