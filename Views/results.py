@@ -39,6 +39,14 @@ def show_results(handler):
             "|_____/_/\\_\\___\\___|_|_|\\___|_| |_|\\__(_)"
         ]
 
+        ascii_great = [
+            "  ____                _   _ ",
+            " / ___|_ __ ___  __ _| |_| |",
+            "| |  _| '__/ _ \\/ _` | __| |",
+            "| |_| | | |  __/ (_| | |_|_|",
+            " \____|_|  \\___|\\__,_|\\__(_)"
+        ]
+
         ascii_good = [
             "  ____                 _ _ ",
             " / ___| ___   ___   __| | |",
@@ -66,7 +74,9 @@ def show_results(handler):
             art = ascii_flawless
         elif s >= 75:
             art = ascii_excellent
-        elif s >= 40:
+        elif s >= 50:
+            art = ascii_great
+        elif s >= 25:
             art = ascii_good
         elif s >= 10:
             art = ascii_terrible
